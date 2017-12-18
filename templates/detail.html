@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ name }}{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}">{% endblock %}
+
+{% block content %}
+    <div class="header-logo">
+        <section class="top clearfix">
+            <div class="pull-left">
+                <h1><a class="logo" href="{{ url_for('index') }}">YMovie</a></h1>
+            </div>
+        </section>
+    </div>
+    <div class="row">
+        {% for data in datas %}
+            <div class="movie-page col-sm-6 col-md-4">
+                <div class="movie-info thumbnail">
+                    <img class="movie-avatar" src="{{ data.image }}"
+                         alt="...">
+                    <div class="caption">
+                        <h3 class="movie-title"></h3>
+                        <p class="movie-content">{{ data.title }}</p>
+                        <p><a href="{{ data.url }}" class="btn btn-primary" role="button">下载</a></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block page %}
+    <div class="page-footer">
+        <ul class="pagination">
+            <li>
+                <a href="{% if pagination.has_prev %}
+                            {{ url_for('detail', name=name, page=pagination.page - 1) }}
+                         {% else %}
+                            {{ url_for('detail', name=name, page=pagination.page) }}
+                         {% endif %}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% for paginate in pagination.iter_pages() %}
+                {% if paginate == pagination.page %}
+                    <li class="active">
+                        <a href="{{ url_for('detail', name=name, page=paginate) }}">{{ paginate }}</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ url_for('detail', name=name, page=paginate) }}">{{ paginate }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            <li>
+                <a href="{% if pagination.has_next %}
+                            {{ url_for('detail', name=name, page=pagination.page + 1) }}
+                         {% else %}
+                            {{ url_for('detail', name=name, page=pagination.page) }}
+                         {% endif %}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

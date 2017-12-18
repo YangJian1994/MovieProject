@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}YMovie{% endblock %}
+
+{% block header %}
+    <div id="header" class="content-block header-wrapper">
+        <div class="header-wrapper-inner">
+            <section class="top clearfix">
+                <div class="pull-left">
+                    <h1><a class="logo" href="{{ url_for('index') }}">YMovie</a></h1>
+                </div>
+            </section>
+            <section class="center">
+                <div class="slogan">
+                    YOU &amp; Movie
+                </div>
+                <div class="secondary-slogan">
+                    The area of Movie Sharing.
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="content-block" id="portfolio">
+        <div class="container">
+            <header class="block-heading cleafix">
+                <a href="#" class="btn btn-o btn-lg pull-right">View All</a>
+                <h1>Our Latest Movies</h1>
+                <p>Take a look at some of our recent contributions</p>
+            </header>
+            <section class="block-body">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a href="{{ url_for('detail', name='recommend') }}" class="recent-work movie1">
+                            <span class="btn btn-o-white">推荐</span>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="{{ url_for('detail', name='action') }}" class="recent-work movie2">
+                            <span class="btn btn-o-white">动作</span>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="{{ url_for('detail', name='fiction') }}" class="recent-work movie3">
+                            <span class="btn btn-o-white">科幻</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a href="{{ url_for('detail', name='war') }}" class="recent-work movie4">
+                            <span class="btn btn-o-white">战争</span>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="{{ url_for('detail', name='love') }}" class="recent-work movie5">
+                            <span class="btn btn-o-white">爱情</span>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="{{ url_for('detail', name='funny') }}" class="recent-work movie6">
+                            <span class="btn btn-o-white">喜剧</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}
+
+{% block contact %}
+    <div class="content-block" id="contact">
+        <div class="container text-center">
+            <header class="block-heading cleafix">
+                <h1>Contact Us</h1>
+                <p>Feel free to drop us a line.</p>
+            </header>
+            <section class="block-body">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <form class="" role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-white" id="subject"
+                                       placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control form-control-white" id="exampleInputEmail2"
+                                       placeholder="Enter email" required>
+                            </div>
+                            <div class="form-group">
+                                    <textarea class="form-control form-control-white" placeholder="Write Something"
+                                              required></textarea>
+                            </div>
+                            <input type="submit" class="btn btn-o-white" value="Say Hello">
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}
